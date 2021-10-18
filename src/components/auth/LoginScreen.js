@@ -1,21 +1,22 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
+import { startGoogleLogin, startLoginEmailPassword } from "../../actions/auth";
 import { useForm } from "../../hooks/useForm";
-import { startLoginEmailPassword, startGoogleLogin } from "../../actions/auth";
 
 export default function LoginScreen() {
   const { loading } = useSelector((state) => state.ui);
 
   const dispatch = useDispatch();
 
-  //el useDispactch le da acceso al dispatch
+  // el useDispactch le da acceso al dispatch
 
   const [formValues, handleInputChange] = useForm({
-    email: "email@mail.com",
-    password: "123456",
+    email: "",
+    password: "",
   });
-
+  console.log(formValues);
   const { email, password } = formValues;
 
   const handleLogin = (e) => {
@@ -68,7 +69,7 @@ export default function LoginScreen() {
             <img
               className="google-icon"
               src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-              alt="google button"
+              alt=" google button "
             />
           </div>
           <p className="btn-text">
@@ -76,7 +77,7 @@ export default function LoginScreen() {
           </p>
         </div>
       </div>
-      <Link to="/auth/register" className="link mt-5">
+      <Link to="/auth / register " className=" link mt - 5 ">
         Create new account
       </Link>
     </>

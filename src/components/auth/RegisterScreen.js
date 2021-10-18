@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useForm } from "../../hooks/useForm";
-import validator from "validator";
 import { useDispatch, useSelector } from "react-redux";
-import { removeError, setError } from "../../actions/ui";
+import { Link } from "react-router-dom";
+import validator from "validator";
+
 import { starRegisterWithEmailPasswordName } from "../../actions/auth";
+import { removeError, setError } from "../../actions/ui";
+import { useForm } from "../../hooks/useForm";
 
 export default function RegisterScreen() {
   const dispatch = useDispatch();
@@ -12,10 +13,10 @@ export default function RegisterScreen() {
   const { msgError } = useSelector((state) => state.ui);
 
   const [formValues, handleInputChange] = useForm({
-    name: "victor",
-    email: "email@mail.com",
-    password: "123456",
-    password2: "123456",
+    name: "",
+    email: "",
+    password: "",
+    password2: "",
   });
 
   const { name, email, password, password2 } = formValues;
@@ -69,7 +70,7 @@ export default function RegisterScreen() {
           value={name}
           onChange={handleInputChange}
           autoComplete="off"
-        />
+        />{" "}
         <input
           type="text"
           placeholder="Email"
@@ -79,7 +80,6 @@ export default function RegisterScreen() {
           onChange={handleInputChange}
           autoComplete="off"
         />
-
         {/* <input
           type="password"
           placeholder="Password"
@@ -96,7 +96,6 @@ export default function RegisterScreen() {
           value={password}
           onChange={handleInputChange}
         />
-
         <input
           type="password"
           placeholder="Confirm password"
@@ -116,7 +115,7 @@ export default function RegisterScreen() {
       <hr />
 
       <Link className="link mt-5" to="/auth/login">
-        Already register?
+        Already register ?{" "}
       </Link>
     </>
   );
